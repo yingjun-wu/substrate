@@ -45,11 +45,11 @@ use sp_wasm_interface::HostFunctions;
 pub enum WasmExecutionMethod {
 	/// Uses the Wasmi interpreter.
 	Interpreted,
-	/// Uses the Wasmtime compiled runtime.
-	Compiled {
-		/// The instantiation strategy to use.
-		instantiation_strategy: sc_executor_wasmtime::InstantiationStrategy,
-	},
+	// /// Uses the Wasmtime compiled runtime.
+	// Compiled {
+	// 	/// The instantiation strategy to use.
+	// 	instantiation_strategy: sc_executor_wasmtime::InstantiationStrategy,
+	// },
 }
 
 impl Default for WasmExecutionMethod {
@@ -314,22 +314,22 @@ where
 			)
 			.map(|runtime| -> Arc<dyn WasmModule> { Arc::new(runtime) })
 		},
-		WasmExecutionMethod::Compiled { instantiation_strategy } =>
-			sc_executor_wasmtime::create_runtime::<H>(
-				blob,
-				sc_executor_wasmtime::Config {
-					allow_missing_func_imports,
-					cache_path: cache_path.map(ToOwned::to_owned),
-					semantics: sc_executor_wasmtime::Semantics {
-						heap_alloc_strategy,
-						instantiation_strategy,
-						deterministic_stack_limit: None,
-						canonicalize_nans: false,
-						parallel_compilation: true,
-					},
-				},
-			)
-			.map(|runtime| -> Arc<dyn WasmModule> { Arc::new(runtime) }),
+		// WasmExecutionMethod::Compiled { instantiation_strategy } =>
+		// 	sc_executor_wasmtime::create_runtime::<H>(
+		// 		blob,
+		// 		sc_executor_wasmtime::Config {
+		// 			allow_missing_func_imports,
+		// 			cache_path: cache_path.map(ToOwned::to_owned),
+		// 			semantics: sc_executor_wasmtime::Semantics {
+		// 				heap_alloc_strategy,
+		// 				instantiation_strategy,
+		// 				deterministic_stack_limit: None,
+		// 				canonicalize_nans: false,
+		// 				parallel_compilation: true,
+		// 			},
+		// 		},
+		// 	)
+		// 	.map(|runtime| -> Arc<dyn WasmModule> { Arc::new(runtime) }),
 	}
 }
 
