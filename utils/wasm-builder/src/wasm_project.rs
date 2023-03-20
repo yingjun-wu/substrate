@@ -712,7 +712,7 @@ fn compact_wasm_file(
 	let bloaty_path = project.join(format!("{}.wasm", out_name));
 	fs::copy(in_path, &bloaty_path).expect("Copying the bloaty file to the project dir.");
 
-	(wasm_compact_path, wasm_compact_compressed_path, WasmBinaryBloaty(bloaty_path))
+	(wasm_compact_compressed_path, wasm_compact_path, WasmBinaryBloaty(bloaty_path))
 }
 
 fn compress_wasm(wasm_binary_path: &Path, compressed_binary_out_path: &Path) -> bool {

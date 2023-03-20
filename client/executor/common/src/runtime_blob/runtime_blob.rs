@@ -37,9 +37,9 @@ impl RuntimeBlob {
 	///
 	/// See [`sp_maybe_compressed_blob`] for details about decompression.
 	pub fn uncompress_if_needed(wasm_code: &[u8]) -> Result<Self, WasmError> {
-		use sp_maybe_compressed_blob::CODE_BLOB_BOMB_LIMIT;
-		let wasm_code = sp_maybe_compressed_blob::decompress(wasm_code, CODE_BLOB_BOMB_LIMIT)
-			.map_err(|e| WasmError::Other(format!("Decompression error: {:?}", e)))?;
+		// use sp_maybe_compressed_blob::CODE_BLOB_BOMB_LIMIT;
+		// let wasm_code = sp_maybe_compressed_blob::decompress(wasm_code, CODE_BLOB_BOMB_LIMIT)
+		// 	.map_err(|e| WasmError::Other(format!("Decompression error: {:?}", e)))?;
 		Self::new(&wasm_code)
 	}
 

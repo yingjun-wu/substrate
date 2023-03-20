@@ -539,11 +539,12 @@ mod tests {
 
 	#[test]
 	fn embed_runtime_version_works() {
-		let wasm = sp_maybe_compressed_blob::decompress(
-			substrate_test_runtime::wasm_binary_unwrap(),
-			sp_maybe_compressed_blob::CODE_BLOB_BOMB_LIMIT,
-		)
-		.expect("Decompressing works");
+		// let wasm = sp_maybe_compressed_blob::decompress(
+		// 	substrate_test_runtime::wasm_binary_unwrap(),
+		// 	sp_maybe_compressed_blob::CODE_BLOB_BOMB_LIMIT,
+		// )
+		// .expect("Decompressing works");
+		let wasm = substrate_test_runtime::wasm_binary_unwrap();
 		let runtime_version = RuntimeVersion {
 			spec_name: "test_replace".into(),
 			impl_name: "test_replace".into(),
